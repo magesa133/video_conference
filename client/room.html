@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting Room</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="room-container">
+        <div class="main-content">
+            <div class="video-grid" id="videoGrid">
+                <div class="video-container">
+                    <video id="localVideo" autoplay muted></video>
+                    <div class="video-overlay">
+                        <span class="participant-name">You</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button id="audioBtn" onclick="toggleAudio()">
+                    <i class="fas fa-microphone"></i>
+                </button>
+                <button id="videoBtn" onclick="toggleVideo()">
+                    <i class="fas fa-video"></i>
+                </button>
+                <button id="screenShareBtn" onclick="toggleScreenShare()">
+                    <i class="fas fa-desktop"></i>
+                </button>
+                <button id="chatBtn" onclick="toggleChat()">
+                    <i class="fas fa-comments"></i>
+                </button>
+                <button id="participantsBtn" onclick="toggleParticipants()">
+                    <i class="fas fa-users"></i>
+                </button>
+                <button id="leaveBtn" onclick="leaveRoom()" class="leave-btn">
+                    <i class="fas fa-phone-slash"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-tabs">
+                <button onclick="showTab('chat')" class="tab-btn active">Chat</button>
+                <button onclick="showTab('participants')" class="tab-btn">Participants</button>
+            </div>
+
+            <div id="chatTab" class="tab-content">
+                <div id="chatMessages" class="chat-messages"></div>
+                <div class="chat-input">
+                    <input type="text" id="messageInput" placeholder="Type a message...">
+                    <button onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="participantsTab" class="tab-content" style="display: none;">
+                <div id="participantsList" class="participants-list"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.1/socket.io.js"></script>
+    <script src="room.js"></script>
+</body>
+</html>

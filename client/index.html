@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Conference</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="meeting-container">
+        <div id="participants-grid"></div>
+    </div>
+    <div id="toolbar">
+        <button id="toggle-audio">Mute</button>
+        <button id="toggle-video">Stop Video</button>
+        <button id="share-screen">Share Screen</button>
+        <button id="leave-meeting">Leave Meeting</button>
+    </div>
+    <div id="room-container">
+        <input type="text" id="room-id" placeholder="Enter Room ID">
+        <button id="join-button">Join Room</button>
+        <button id="generate-link">Generate Meeting Link</button>
+        <div id="meeting-link-container" style="display: none;">
+            <p>Meeting Link: <a id="meeting-link" target="_blank"></a></p>
+        </div>
+        <p>Participants: <span id="participant-count">0</span></p>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
